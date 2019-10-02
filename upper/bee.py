@@ -30,6 +30,7 @@ def sting(requests, delay=0):
     global reqs
 
     sock = socket(AF_INET, SOCK_DGRAM)
+
     letters = bytes(string.ascii_lowercase, 'ascii')
 
     start = time.perf_counter()
@@ -49,7 +50,7 @@ def sting(requests, delay=0):
 
 
 def main():
-    Thread(target=monitor).start()
+    Thread(target=monitor, daemon=True).start()
 
     if len(sys.argv) < 2:
         sting(10)
